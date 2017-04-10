@@ -40,23 +40,21 @@ int main(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-	IplImage* src = cvLoadImage("C:\\Users\\Lawliet\\Git\\Backup\\OpenCV_Practice\\OpenCV_Practice\\X64\\Lenna.png", 1);
-	 
-		 int x = atoi("10");
-		 int y = atoi("300");
-		 int width = atoi("10");
-		 int height = atoi("300");
-		 int add = atoi("3");
+	 IplImage* src;
+	 if (argc == 7 && ((src = cvLoadImage("C:\\Users\Lawliet\Git\Backup\OpenCV_Practice\OpenCV_Practice\X64\Lenna.png", 1))!= 0))
+	 {
+		 int x = atoi(10);
+		 int y = atoi(70);
+		 int width = atoi(10);
+		 int height = atoi(70);
+		 int add = atoi(50);
 
 		 cvSetImageROI(src, cvRect(x, y, width, height));
 		 cvAddS(src, cvScalar(add), src);
 		 cvResetImageROI(src);
 		 cvNamedWindow("Rio_Add", 1);
 		 cvShowImage("Rio_Add", src);
-
 		 cvWaitKey(0);
-		 cvReleaseImage(&src);
-		 cvDestroyAllWindows;
-	 
+	 }
 	 return 0;
 }
