@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "cv.h"
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
@@ -42,14 +43,14 @@ int main(int argc, char** argv)
 {
 	IplImage* src = cvLoadImage("C:\\Users\\Lawliet\\Git\\Backup\\OpenCV_Practice\\OpenCV_Practice\\X64\\Lenna.png", 1);
 	 
-		 int x = atoi("10");
-		 int y = atoi("300");
-		 int width = atoi("10");
-		 int height = atoi("300");
-		 int add = atoi("3");
+		 int x = atoi("100");
+		 int y = atoi("300"); //设置起始像素位置
+		 int width = atoi("200");
+		 int height = atoi("200");//设置ROI的宽和高
+		 int add = atoi("-255");//-255~255
 
-		 cvSetImageROI(src, cvRect(x, y, width, height));
-		 cvAddS(src, cvScalar(add), src);
+		 cvSetImageROI(src, cvRect(x, y, width, height));//选择感兴趣区域
+		 cvAddS(src, cvScalarAll(add), src);//cvScalar有三个通道RGB，all的话就都加上
 		 cvResetImageROI(src);
 		 cvNamedWindow("Rio_Add", 1);
 		 cvShowImage("Rio_Add", src);
